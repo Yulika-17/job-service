@@ -1,0 +1,36 @@
+import { Divider, RangeSlider } from "@mantine/core";
+
+import { dropdownData } from "../../Data/JobsData";
+import MultiInput from "./MultiInput";
+import { useState } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { updateFilter } from "../../Slices/FilterSlice";
+
+const SearchBar = () => {
+    const dispatch = useDispatch();
+    const [value, setValue] = useState<[number, number]>([0, 300]);
+    const handleChange = (event: any) => {
+        dispatch(updateFilter({ salary: event }));
+    }
+    return (
+        <div className="px-5 py-8 items-center !text-mine-shaft-100 flex">
+            {
+                dropdownData.map((item, index) => {
+                    return <React.Fragment key={index}><div className="w-1/5"><MultiInput title={item.title} icon={item.icon} options={item.options} />
+                    </div>
+                        <Divider mr="xs" size="xs" orientation="vertical" /></React.Fragment>
+
+                })
+            }
+            <div className="w-1/5 text-sm text-mine-shaft-300 [&_.mantine-Slider-label]:!translate-y-10">
+                <div className="flex mb-1 justify-between">
+                    <div>Salary</div>
+                    <div>&#8377;{value[0]} LPA -&#8377;{value[1]} LPA</div>
+                </div>
+                <RangeSlider color="brightSun.4" size="xs" value={value} onChange={setValue} onChangeEnd={handleChange} />
+            </div>
+        </div>
+    )
+}
+export default SearchBar;
