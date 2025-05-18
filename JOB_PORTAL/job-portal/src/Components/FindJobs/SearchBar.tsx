@@ -9,7 +9,7 @@ import { updateFilter } from "../../Slices/FilterSlice";
 
 const SearchBar = () => {
     const dispatch = useDispatch();
-    const [value, setValue] = useState<[number, number]>([0, 300]);
+    const [value, setValue] = useState<[number, number]>([0, 200]);
     const handleChange = (event: any) => {
         dispatch(updateFilter({ salary: event }));
     }
@@ -25,8 +25,8 @@ const SearchBar = () => {
             }
             <div className="w-1/5 text-sm text-mine-shaft-300 [&_.mantine-Slider-label]:!translate-y-10">
                 <div className="flex mb-1 justify-between">
-                    <div>Salary</div>
-                    <div>&#8377;{value[0]} LPA -&#8377;{value[1]} LPA</div>
+                    <div>Зарплата</div>
+                    <div>₽{value[0]} тыс. - ₽{value[1]} тыс.</div>
                 </div>
                 <RangeSlider color="brightSun.4" size="xs" value={value} onChange={setValue} onChangeEnd={handleChange} />
             </div>

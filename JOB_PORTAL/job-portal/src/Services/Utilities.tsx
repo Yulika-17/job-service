@@ -3,11 +3,37 @@ const formatDate = (dateString: string) => {
     const options = { year: 'numeric' as const, month: 'short' as const };
     return date.toLocaleString('en-US', options);
 }
+// function timeAgo(timestamp: string) {
+//     const now = new Date();
+//     const postDate = new Date(timestamp);
+//     const diffInMs = now.getTime() - postDate.getTime();
+
+
+//     const seconds = Math.floor(diffInMs / 1000);
+//     const minutes = Math.floor(seconds / 60);
+//     const hours = Math.floor(minutes / 60);
+//     const days = Math.floor(hours / 24);
+//     const months = Math.floor(days / 30);
+//     const years = Math.floor(months / 12);
+
+//     if (seconds < 60) {
+//         return `${seconds} секунд${seconds === 1 ? '' : 's'} ago`;
+//     } else if (minutes < 60) {
+//         return `${minutes} minute${minutes === 1 ? '' : 's'} ago`;
+//     } else if (hours < 24) {
+//         return `${hours} hour${hours === 1 ? '' : 's'} ago`;
+//     } else if (days < 30) {
+//         return `${days} day${days === 1 ? '' : 's'} ago`;
+//     } else if (months < 12) {
+//         return `${months} month${months === 1 ? '' : 's'} ago`;
+//     } else {
+//         return `${years} year${years === 1 ? '' : 's'} ago`;
+//     }
+// }
 function timeAgo(timestamp: string) {
     const now = new Date();
     const postDate = new Date(timestamp);
     const diffInMs = now.getTime() - postDate.getTime();
-
 
     const seconds = Math.floor(diffInMs / 1000);
     const minutes = Math.floor(seconds / 60);
@@ -16,20 +42,30 @@ function timeAgo(timestamp: string) {
     const months = Math.floor(days / 30);
     const years = Math.floor(months / 12);
 
+    function pluralize(number: number, one: string, few: string, many: string) {
+        const n = Math.abs(number) % 100;
+        const n1 = n % 10;
+        if (n > 10 && n < 20) return many;
+        if (n1 > 1 && n1 < 5) return few;
+        if (n1 === 1) return one;
+        return many;
+    }
+
     if (seconds < 60) {
-        return `${seconds} second${seconds === 1 ? '' : 's'} ago`;
+        return `${seconds} ${pluralize(seconds, "секунда", "секунды", "секунд")} назад`;
     } else if (minutes < 60) {
-        return `${minutes} minute${minutes === 1 ? '' : 's'} ago`;
+        return `${minutes} ${pluralize(minutes, "минута", "минуты", "минут")} назад`;
     } else if (hours < 24) {
-        return `${hours} hour${hours === 1 ? '' : 's'} ago`;
+        return `${hours} ${pluralize(hours, "час", "часа", "часов")} назад`;
     } else if (days < 30) {
-        return `${days} day${days === 1 ? '' : 's'} ago`;
+        return `${days} ${pluralize(days, "день", "дня", "дней")} назад`;
     } else if (months < 12) {
-        return `${months} month${months === 1 ? '' : 's'} ago`;
+        return `${months} ${pluralize(months, "месяц", "месяца", "месяцев")} назад`;
     } else {
-        return `${years} year${years === 1 ? '' : 's'} ago`;
+        return `${years} ${pluralize(years, "год", "года", "лет")} назад`;
     }
 }
+
 const getBase64 = (file: any) => {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -54,6 +90,20 @@ const openPDF = (base64: string) => {
         alert('Popup was blocked. Please allow popups for this website.');
     }
 }
+// const formatInterviewTime = (dateString: string) => {
+//     const date = new Date(dateString);
+
+//     const options: Intl.DateTimeFormatOptions = {
+//         year: 'numeric',
+//         month: 'long',
+//         day: 'numeric',
+//         hour: 'numeric',
+//         minute: 'numeric',
+//         hour12: true
+//     };
+
+//     return date.toLocaleString('en-US', options);
+// }
 const formatInterviewTime = (dateString: string) => {
     const date = new Date(dateString);
 
@@ -61,11 +111,12 @@ const formatInterviewTime = (dateString: string) => {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        hour12: true
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
     };
 
-    return date.toLocaleString('en-US', options);
+    return date.toLocaleString('ru-RU', options);
 }
+
 export { formatDate, timeAgo, getBase64, openPDF, formatInterviewTime };

@@ -27,7 +27,7 @@ const ResetPassword = (props: any) => {
         setOtpSending(true);
         sendOtp(email).then((res)=>{
             console.log(res);
-            successNotification("OTP Sent Successfully", "Enter OTP to reset.");
+            successNotification("Код отправлен успешно", "Введите код для сброса пароля.");
             setOtpSent(true);
             setOtpSending(false);
             setResendLoader(true);
@@ -35,17 +35,17 @@ const ResetPassword = (props: any) => {
         }).catch((err)=>{
             console.log(err);
             setOtpSending(false);
-            errorNotification("OTP Sending Failed.", err.response.data.errorMessage);
+            errorNotification("Ошибка отправки кода", err.response.data.errorMessage);
         })
     }
     const handleVerifyOtp=(otp:string)=>{
         verifyOtp(email, otp).then((res)=>{
             console.log(res);
-            successNotification("OTP Verified", "Enter new password.");
+            successNotification("Код подтверждён", "Введите новый пароль.");
             setVerified(true);
         }).catch((err)=>{
             console.log(err);
-            errorNotification("OTP Verification Failed", err.response.data.errorMessage);
+            errorNotification("Ошибка подтверждения кода", err.response.data.errorMessage);
         })
     }
     const resendOtp=()=>{
@@ -62,27 +62,27 @@ const ResetPassword = (props: any) => {
     const handleResetPassword=()=>{
         resetPassword(email, password).then((res)=>{
             console.log(res);
-            successNotification("Password Changed", "Login with new password.");
+            successNotification("Пароль успешно изменён", "Войдите, используя новый пароль.");
             props.close();
         }).catch((err)=>{
             console.log(err);
-            errorNotification("Password Reset Failed", err.response.data.errorMessage);     
+            errorNotification("Ошибка при изменении пароля", err.response.data.errorMessage);     
         })
     }
-    return <Modal opened={props.opened} onClose={props.close} title="Reset Password">
+    return <Modal opened={props.opened} onClose={props.close} title="Сброс пароля">
         <div className="flex flex-col gap-6">
-            <TextInput value={email} name="email" size="md" onChange={(e)=>setEmail(e.target.value)} withAsterisk leftSection={<IconAt size={16} />} label="Email" placeholder="Your email" 
-            rightSection = {<Button loading={otpSending && !otpSent} size="xs" className="mr-1" onClick={handleSendOtp} autoContrast disabled={email==="" || otpSent} variant="filled">Login</Button>} rightSectionWidth="xl"
+            <TextInput value={email} name="email" size="md" onChange={(e)=>setEmail(e.target.value)} withAsterisk leftSection={<IconAt size={16} />} label="Email" placeholder="Ваш email" 
+            rightSection = {<Button loading={otpSending && !otpSent} size="xs" className="mr-1" onClick={handleSendOtp} autoContrast disabled={email==="" || otpSent} variant="filled">Получить код</Button>} rightSectionWidth="xl"
             />
             {otpSent && <PinInput onComplete={handleVerifyOtp} length={6} className="mx-auto" size="md" gap="lg" type="number" />}
             {otpSent&& !verified &&
             <div className="flex gap-2">
-                <Button fullWidth loading={otpSending} color="brightSun.4" onClick={resendOtp} autoContrast variant="light">{resendLoader?seconds:"Resend"}</Button>
-                <Button fullWidth onClick={changeEmail} autoContrast variant="filled">Change Email</Button>
+                <Button fullWidth loading={otpSending} color="brightSun.4" onClick={resendOtp} autoContrast variant="light">{resendLoader?seconds:"Отправить повторно"}</Button>
+                <Button fullWidth onClick={changeEmail} autoContrast variant="filled">Изменить email</Button>
             </div>
             }
-            {verified && <PasswordInput value={password}  error={passErr} name="password" onChange={(e)=>{setPassword(e.target.value); setPassErr(signupValidation("password", e.target.value))}} withAsterisk leftSection={<IconLock size={16} />} label="Password" placeholder="Password" />}
-            {verified && <Button onClick={handleResetPassword} autoContrast variant="filled">Change Password</Button>}
+            {verified && <PasswordInput value={password}  error={passErr} name="password" onChange={(e)=>{setPassword(e.target.value); setPassErr(signupValidation("password", e.target.value))}} withAsterisk leftSection={<IconLock size={16} />} label="Пароль" placeholder="Пароль" />}
+            {verified && <Button onClick={handleResetPassword} autoContrast variant="filled">Изменить пароль</Button>}
         </div>
     </Modal>
 }

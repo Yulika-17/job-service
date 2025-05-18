@@ -9,7 +9,7 @@ import { updateFilter } from "../../Slices/FilterSlice";
 
 const SearchBar=()=>{
     const dispatch = useDispatch();
-    const [value, setValue] = useState<[number, number]>([0, 50]);
+    const [value, setValue] = useState<[number, number]>([0, 5]);
     const [name, setName] = useState('');
     const handleChange = (name:any, event:any) => {
         if(name=="exp"){
@@ -24,7 +24,7 @@ const SearchBar=()=>{
         <div className="px-5 py-8 items-center !text-mine-shaft-100 flex">
             <div className="flex items-center">
                 <div className="text-bright-sun-400 bg-mine-shaft-900 rounded-full p-1 mr-2"><IconUserCircle size={20}/></div>
-                <Input defaultValue={name} onChange={(e)=>handleChange("name", e)} className="[&_input]:!placeholder-mine-shaft-300" variant="unstyled" placeholder="Talent Name" />
+                <Input defaultValue={name} onChange={(e)=>handleChange("name", e)} className="[&_input]:!placeholder-mine-shaft-300" variant="unstyled" placeholder="Имя студента" />
             </div>
             {
                 searchFields.map((item, index) => {
@@ -36,10 +36,10 @@ const SearchBar=()=>{
             }
             <div className="w-1/5 text-sm text-mine-shaft-300 [&_.mantine-Slider-label]:!translate-y-10">
                 <div className="flex mb-1 justify-between">
-                    <div>Experience (Year)</div>
+                    <div>Опыт (лет)</div>
                     <div>{value[0]} - {value[1]} </div>
                 </div>
-                <RangeSlider onChangeEnd={(e)=>handleChange("exp", e)} color="brightSun.4" min={1} max={50} minRange={1} size="xs" value={value} onChange={setValue} />
+                <RangeSlider onChangeEnd={(e)=>handleChange("exp", e)} color="brightSun.4" min={1} max={5} minRange={1} size="xs" value={value} onChange={setValue} />
             </div>
         </div>
     )

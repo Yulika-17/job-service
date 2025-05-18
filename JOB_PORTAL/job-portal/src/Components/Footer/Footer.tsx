@@ -10,7 +10,7 @@ const Footer=()=>{
                 <IconSchool className="h-6 w-6" stroke={2.5} />
                 <div className="text-xl font-semibold">StudJob</div>
             </div>
-            <div className="text-sm text-mine-shaft-300">Job portal with user profiles, skill updates, certifications, work experience and admin job postings.</div>
+            <div className="text-sm text-mine-shaft-300">Портал вакансий для студентов с профилями пользователей, обновлением навыков, сертификатами, опытом работы.</div>
             <div className="flex gap-3 text-bright-sun-400 [&>div]:bg-mine-shaft-900 [&>div]:p-2 [&>div]:rounded-full [&>div]:cursor-pointer hover:[&>div]:bg-mine-shaft-700">
                 <div><IconBrandFacebook /></div>
                 <div><IconBrandInstagram /></div>

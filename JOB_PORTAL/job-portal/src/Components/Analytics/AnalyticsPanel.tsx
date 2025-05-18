@@ -20,22 +20,22 @@ const AnalyticsPanel = () => {
 
     return (
         <div className="p-5">
-            <Title order={2}>University Analytics</Title>
+            <Title order={2}>Аналитика университета</Title>
             <SimpleGrid cols={2} spacing="lg" mt="xl">
                 <Card shadow="sm" padding="lg" radius="md" withBorder>
-                    <Text size="lg">👨‍🎓 Total Students</Text>
+                    <Text size="lg">👨‍🎓 Всего студентов</Text>
                     <Title>{stats.totalStudents}</Title>
                 </Card>
                 <Card shadow="sm" padding="lg" radius="md" withBorder>
-                    <Text size="lg">✅ Verified Students</Text>
+                    <Text size="lg">✅ Проверенные студенты</Text>
                     <Title>{stats.verifiedStudents}</Title>
                 </Card>
                 <Card shadow="sm" padding="lg" radius="md" withBorder>
-                    <Text size="lg">📨 Students Applied</Text>
+                    <Text size="lg">📨 Студенты с откликами</Text>
                     <Title>{stats.studentsWithApplications}</Title>
                 </Card>
                 <Card shadow="sm" padding="lg" radius="md" withBorder>
-                    <Text size="lg">🎉 Students Hired</Text>
+                    <Text size="lg">🎉 Принятые студенты</Text>
                     <Title>{stats.studentsHired}</Title>
                 </Card>
             </SimpleGrid>

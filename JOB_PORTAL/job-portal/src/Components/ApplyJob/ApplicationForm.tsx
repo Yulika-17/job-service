@@ -10,8 +10,8 @@ import { useSelector } from "react-redux";
 
 const ApplicationForm = () => {
     const navigate = useNavigate();
-    const {id} = useParams();
-    const user = useSelector((state:any)=>state.user);
+    const { id } = useParams();
+    const user = useSelector((state: any) => state.user);
     const [preview, setPreview] = useState(false);
     const [submit, setSubmit] = useState(false);
     const handlePreview = () => {
@@ -23,14 +23,14 @@ const ApplicationForm = () => {
     const handleSubmit = async () => {
         setSubmit(true);
         let resume: any = await getBase64(form.getValues().resume);
-        let applicant = { ...form.getValues(), applicantId:user.id, resume: resume.split(',')[1] };
+        let applicant = { ...form.getValues(), applicantId: user.id, resume: resume.split(',')[1] };
         applyJob(applicant, id).then((res) => {
             setSubmit(false);
-            successNotification("Success", "Job Applied Successfully");
+            successNotification("Успешно", "Отклик отправлен");
             navigate("/job-history");
-        }).catch((err) => { 
+        }).catch((err) => {
             setSubmit(false);
-            errorNotification("Error", err.response.data.errorMessage);
+            errorNotification("Ошибка", err.response.data.errorMessage);
         });
     }
     const form = useForm({
@@ -45,11 +45,11 @@ const ApplicationForm = () => {
             coverLetter: ''
         },
         validate: {
-            name: isNotEmpty('Name cannot be empty'),
-            email: isNotEmpty('Email cannot be empty'),
-            phone: isNotEmpty('Phone cannot be empty'),
-            website: isNotEmpty('Website cannot be empty'),
-            resume: isNotEmpty('Resume cannot be empty'),
+            name: isNotEmpty('Имя не может быть пустым'),
+            email: isNotEmpty('Электронная почта не может быть пустой'),
+            phone: isNotEmpty('Телефон не может быть пустым'),
+            website: isNotEmpty('Сайт не может быть пустым'),
+            resume: isNotEmpty('Резюме не может быть пустым'),
         }
     })
     return <div>
@@ -59,25 +59,25 @@ const ApplicationForm = () => {
             overlayProps={{ radius: 'sm', blur: 2 }}
             loaderProps={{ color: 'brightSun.4', type: 'bars' }}
         />
-        <div className="text-xl font-semibold mb-5">Submit Your Application</div>
+        <div className="text-xl font-semibold mb-5">Откликнуться на вакансию</div>
         <div className="flex flex-col gap-5">
             <div className="flex gap-10 [&>*]:w-1/2">
-                <TextInput {...form.getInputProps("name")} readOnly={preview} variant={preview ? "unstyled" : "default"} className={`${preview ? "text-mine-shaft-300 font-semibold" : ""}`} label="Full Name" withAsterisk placeholder="Enter name" />
-                <TextInput {...form.getInputProps("email")} readOnly={preview} variant={preview ? "unstyled" : "default"} className={`${preview ? "text-mine-shaft-300 font-semibold" : ""}`} label="Email" withAsterisk placeholder="Enter email" />
+                <TextInput {...form.getInputProps("name")} readOnly={preview} variant={preview ? "unstyled" : "default"} className={`${preview ? "text-mine-shaft-300 font-semibold" : ""}`} label="ФИО" withAsterisk placeholder="Введите имя" />
+                <TextInput {...form.getInputProps("email")} readOnly={preview} variant={preview ? "unstyled" : "default"} className={`${preview ? "text-mine-shaft-300 font-semibold" : ""}`} label="Email" withAsterisk placeholder="Введите email" />
             </div>
             <div className="flex gap-10 [&>*]:w-1/2">
-                <NumberInput {...form.getInputProps("phone")} readOnly={preview} variant={preview ? "unstyled" : "default"} className={`${preview ? "text-mine-shaft-300 font-semibold" : ""}`} label="Phone Number" withAsterisk placeholder="Enter Phone Number" hideControls min={0} max={9999999999} clampBehavior="strict" />
-                <TextInput {...form.getInputProps("website")} readOnly={preview} variant={preview ? "unstyled" : "default"} className={`${preview ? "text-mine-shaft-300 font-semibold" : ""}`} label="Personal Website" withAsterisk placeholder="Enter Url" />
+                <NumberInput {...form.getInputProps("phone")} readOnly={preview} variant={preview ? "unstyled" : "default"} className={`${preview ? "text-mine-shaft-300 font-semibold" : ""}`} label="Телефон" withAsterisk placeholder="Введите номер телефона" hideControls min={0} max={9999999999} clampBehavior="strict" />
+                <TextInput {...form.getInputProps("website")} readOnly={preview} variant={preview ? "unstyled" : "default"} className={`${preview ? "text-mine-shaft-300 font-semibold" : ""}`} label="Личный сайт или профиль GitHub" withAsterisk placeholder="Введите URL" />
             </div>
-            <FileInput {...form.getInputProps("resume")} accept="application/pdf" readOnly={preview} variant={preview ? "unstyled" : "default"} className={`${preview ? "text-mine-shaft-300 font-semibold" : ""}`} withAsterisk leftSection={<IconPaperclip stroke={1.5} />} label="Attach your CV" placeholder="Your CV" leftSectionPointerEvents="none"
+            <FileInput {...form.getInputProps("resume")} accept="application/pdf" readOnly={preview} variant={preview ? "unstyled" : "default"} className={`${preview ? "text-mine-shaft-300 font-semibold" : ""}`} withAsterisk leftSection={<IconPaperclip stroke={1.5} />} label="Прикрепите резюме" placeholder="Ваше резюме" leftSectionPointerEvents="none"
             />
-            <Textarea {...form.getInputProps("coverLetter")} readOnly={preview} variant={preview ? "unstyled" : "default"} className={`${preview ? "text-mine-shaft-300 font-semibold" : ""}`} withAsterisk placeholder="Type something about yourself..." label="Cover Letter" autosize minRows={4}
+            <Textarea {...form.getInputProps("coverLetter")} readOnly={preview} variant={preview ? "unstyled" : "default"} className={`${preview ? "text-mine-shaft-300 font-semibold" : ""}`} withAsterisk placeholder="Напишите что-нибудь о себе..." label="Сопроводительное письмо" autosize minRows={4}
             />
-            {!preview && <Button onClick={handlePreview} color="brightSun.4" variant="light" >Preview</Button>}
+            {!preview && <Button onClick={handlePreview} color="brightSun.4" variant="light" >Предпросмотр</Button>}
             {
                 preview && <div className="flex gap-10 [&>*]:w-1/2">
-                    <Button fullWidth onClick={handlePreview} color="brightSun.4" variant="outline" >Edit</Button>
-                    <Button fullWidth onClick={handleSubmit} color="brightSun.4" variant="light" >Submit</Button>
+                    <Button fullWidth onClick={handlePreview} color="brightSun.4" variant="outline" >Редактировать</Button>
+                    <Button fullWidth onClick={handleSubmit} color="brightSun.4" variant="light" >Откликнуться</Button>
                 </div>
             }
         </div>

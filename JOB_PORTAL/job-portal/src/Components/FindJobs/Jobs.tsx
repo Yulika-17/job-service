@@ -81,13 +81,13 @@ const Jobs = () => {
     }, []);
 
     useEffect(() => {
-        if (sort == "Most Recent") {
+        if (sort == "Сначала новые") {
             setJobList([...jobList].sort((a: any, b: any) => new Date(b.postTime).getTime() - new Date(a.postTime).getTime()));
         }
-        else if (sort == "Salary: Low to High") {
+        else if (sort == "Зарплата: по возрастанию") {
             setJobList([...jobList].sort((a: any, b: any) => a.packageOffered - b.packageOffered));
         }
-        else if (sort == "Salary: High to Low") {
+        else if (sort == "Зарплата: по убыванию") {
             setJobList([...jobList].sort((a: any, b: any) => b.packageOffered - a.packageOffered));
         }
     }, [sort]);
@@ -163,7 +163,7 @@ const Jobs = () => {
     return (
         <div className="px-5 py-5">
             <div className="flex justify-between mt-5">
-                <div className="text-2xl font-semibold">Recommended Jobs</div>
+                <div className="text-2xl font-semibold">Рекомендуемые вакансии</div>
                 <div className="flex gap-3">
                     <Button 
                         variant="outline"
@@ -171,7 +171,7 @@ const Jobs = () => {
                         rightSection={<IconFilter className='h-5 w-5 text-bright-sun-400'/>}
                         onClick={() => setModalOpened(true)}
                     >
-                        All Filters
+                        Все фильтры
                     </Button>
                     <Sort sort="job" />
                 </div>

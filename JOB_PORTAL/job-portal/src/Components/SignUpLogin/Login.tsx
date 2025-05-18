@@ -37,7 +37,7 @@ const Login = () => {
         if (valid) {
             setLoading(true);
             loginUser(data).then((res) => {
-                successNotification("Login Successful", "Redirecting to home page...");
+                successNotification("Вход выполнен успешно", "Переход на главную страницу...");
                 dispatch(setJwt(res.jwt));
                 const decoded = jwtDecode(res.jwt);
                 dispatch(setUser({...decoded, email:decoded.sub}));
@@ -47,7 +47,7 @@ const Login = () => {
             }).catch((err) => {
                 console.log(err);
                 setLoading(false);
-                errorNotification("Login Failed", err.response.data.errorMessage);
+                errorNotification("Ошибка при входе", err.response.data.errorMessage);
             });
         }
     }
@@ -57,12 +57,12 @@ const Login = () => {
         overlayProps={{ radius: 'sm', blur: 2 }}
         loaderProps={{ color: 'brightSun.4', type: 'bars' }}
     /><div className="w-1/2 px-20 flex flex-col justify-center gap-3">
-            <div className="text-2xl font-semibold">Login</div>
-            <TextInput value={data.email} error={formError.email} name="email" onChange={handleChange} withAsterisk leftSection={<IconAt style={{ width: rem(16), height: rem(16) }} />} label="Email" placeholder="Your email" />
-            <PasswordInput value={data.password} error={formError.password} name="password" onChange={handleChange} withAsterisk leftSection={<IconLock style={{ width: rem(18), height: rem(18) }} stroke={1.5} />} label="Password" placeholder="Password" />
-            <Button loading={loading} onClick={handleSubmit} autoContrast variant="filled">Login</Button>
-            <div className="mx-auto">Don't have an account? <span className="text-bright-sun-400 hover:underline cursor-pointer" onClick={() => { navigate("/signup"); setFormError(form); setData(form) }}>SignUp</span></div>
-            <div onClick={open} className="text-bright-sun-400 hover:underline cursor-pointer text-center">Forget password?</div>
+            <div className="text-2xl font-semibold">Вход</div>
+            <TextInput value={data.email} error={formError.email} name="email" onChange={handleChange} withAsterisk leftSection={<IconAt style={{ width: rem(16), height: rem(16) }} />} label="Email" placeholder="Ваш email" />
+            <PasswordInput value={data.password} error={formError.password} name="password" onChange={handleChange} withAsterisk leftSection={<IconLock style={{ width: rem(18), height: rem(18) }} stroke={1.5} />} label="Пароль" placeholder="Пароль" />
+            <Button loading={loading} onClick={handleSubmit} autoContrast variant="filled">Войти</Button>
+            <div className="mx-auto">Ещё нет аккаунта? <span className="text-bright-sun-400 hover:underline cursor-pointer" onClick={() => { navigate("/signup"); setFormError(form); setData(form) }}>Зарегистрируйтесь</span></div>
+            <div onClick={open} className="text-bright-sun-400 hover:underline cursor-pointer text-center">Забыли пароль?</div>
         </div>
         <ResetPassword opened={opened} close={close} />
     </>

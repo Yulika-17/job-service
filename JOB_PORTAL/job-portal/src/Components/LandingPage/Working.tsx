@@ -3,15 +3,15 @@ import { work } from "../../Data/Data";
 
 const Working=()=>{
     return <div className="mt-20 pb-5">
-        <div className="text-4xl text-center font-semibold mb-3 text-mine-shaft-100">How it <span className="text-bright-sun-400">Works</span></div>
-        <div className="text-lg mb-10 mx-auto text-mine-shaft-300 text-center w-1/2">Effortlessly navigate through the process and land your dream job.</div>
+        <div className="text-4xl text-center font-semibold mb-3 text-mine-shaft-100">Как это <span className="text-bright-sun-400">работает</span></div>
+        <div className="text-lg mb-10 mx-auto text-mine-shaft-300 text-center w-1/2">Просто следуйте шагам и найдите работу мечты.</div>
         <div className="flex px-16 justify-between items-center">
             <div className="relative">
                 <img className="w-[30rem]" src="/Working/Girl.png" alt="girl" />
                 <div className="w-36 flex top-[25%] right-0 absolute flex-col items-center gap-1 border border-bright-sun-400 rounded-xl py-3 px-1 backdrop-blur-md">
                     <Avatar className="!h-16 !w-16" src="avatar1.png" alt="it's me" />
-                    <div className="text-sm font-semibold text-mine-shaft-200 text-center">Complete your profile</div>
-                    <div className="text-xs text-mine-shaft-300">70% Completed</div>
+                    <div className="text-sm font-semibold text-mine-shaft-200 text-center">Заполните профиль</div>
+                    <div className="text-xs text-mine-shaft-300">70% заполнено</div>
                 </div>
             </div>
             <div className="flex flex-col gap-10">

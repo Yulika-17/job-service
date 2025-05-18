@@ -42,7 +42,7 @@ const SignUp = () => {
         for (let key in data) {
             if (key === "accountType") continue;
             if (key !== "confirmPassword") newFormError[key] = signupValidation(key, data[key]);
-            else if (data[key] !== data["password"]) newFormError[key] = "Passwords do not match.";
+            else if (data[key] !== data["password"]) newFormError[key] = "Пароли не совпадают.";
             if (newFormError[key]) valid = false;
         }
         setFormError(newFormError);
@@ -51,7 +51,7 @@ const SignUp = () => {
             registerUser(data).then((res) => {
                 console.log(res);
                 setData(form);
-                successNotification("Registered Successfully", "Redirecting to login page...");
+                successNotification("Регистрация прошла успешно", "Переход на главную страницу...");
 
                 setTimeout(() => {
                     setLoading(false);
@@ -60,7 +60,7 @@ const SignUp = () => {
             }).catch((err) => {
                 setLoading(false);
                 console.log(err);
-                errorNotification("Registration Failed", err.response.data.errorMessage);
+                errorNotification("Ошибка при регистрации", err.response.data.errorMessage);
             });
         }
     }
@@ -71,26 +71,26 @@ const SignUp = () => {
         overlayProps={{ radius: 'sm', blur: 2 }}
         loaderProps={{ color: 'brightSun.4', type: 'bars' }}
     /><div className="w-1/2 px-20 flex flex-col justify-center gap-3">
-            <div className="text-2xl font-semibold">Create Account</div>
-            <TextInput value={data.name} error={formError.name} name="name" onChange={handleChange} withAsterisk label="Full Name" placeholder="Your name" />
-            <TextInput value={data.email} error={formError.email} name="email" onChange={handleChange} withAsterisk leftSection={<IconAt style={{ width: rem(16), height: rem(16) }} />} label="Email" placeholder="Your email" />
-            <PasswordInput value={data.password} error={formError.password} name="password" onChange={handleChange} withAsterisk leftSection={<IconLock style={{ width: rem(18), height: rem(18) }} stroke={1.5} />} label="Password" placeholder="Password" />
-            <PasswordInput value={data.confirmPassword} error={formError.confirmPassword} name="confirmPassword" onChange={handleChange} withAsterisk leftSection={<IconLock style={{ width: rem(18), height: rem(18) }} stroke={1.5} />} label="Confirm Password" placeholder="Confirm password" />
+            <div className="text-2xl font-semibold">Создать аккаунт</div>
+            <TextInput value={data.name} error={formError.name} name="name" onChange={handleChange} withAsterisk label="Полное имя" placeholder="Ваше имя" />
+            <TextInput value={data.email} error={formError.email} name="email" onChange={handleChange} withAsterisk leftSection={<IconAt style={{ width: rem(16), height: rem(16) }} />} label="Email" placeholder="Ваш email" />
+            <PasswordInput value={data.password} error={formError.password} name="password" onChange={handleChange} withAsterisk leftSection={<IconLock style={{ width: rem(18), height: rem(18) }} stroke={1.5} />} label="Пароль" placeholder="Пароль" />
+            <PasswordInput value={data.confirmPassword} error={formError.confirmPassword} name="confirmPassword" onChange={handleChange} withAsterisk leftSection={<IconLock style={{ width: rem(18), height: rem(18) }} stroke={1.5} />} label="Подтвердите пароль" placeholder="Подтвердите пароль" />
             <Radio.Group
                 value={data.accountType}
                 onChange={handleChange}
-                label="You are?"
+                label="Кто вы?"
                 withAsterisk
             >
                 <Group mt="xs">
-                    <Radio className="w-[140px] py-4 px-6 border hover:bg-mine-shaft-900 has-[:checked]:bg-bright-sun-400/5 has-[:checked]:border-bright-sun-400 border-mine-shaft-800 rounded-lg" autoContrast value="APPLICANT" label="Applicant" />
-                    <Radio className="w-[140px] py-4 px-6 border hover:bg-mine-shaft-900 has-[:checked]:bg-bright-sun-400/5 has-[:checked]:border-bright-sun-400 border-mine-shaft-800 rounded-lg" autoContrast value="EMPLOYER" label="Employer" />
-                    <Radio className="w-[140px] py-4 px-6 border hover:bg-mine-shaft-900 has-[:checked]:bg-bright-sun-400/5 has-[:checked]:border-bright-sun-400 border-mine-shaft-800 rounded-lg" autoContrast value="UNIVERSITY" label="University" />
+                    <Radio className="w-[123px] py-4 px-6 border hover:bg-mine-shaft-900 has-[:checked]:bg-bright-sun-400/5 has-[:checked]:border-bright-sun-400 border-mine-shaft-800 rounded-lg" autoContrast value="APPLICANT" label="Студент" />
+                    <Radio className="w-[165px] py-4 px-6 border hover:bg-mine-shaft-900 has-[:checked]:bg-bright-sun-400/5 has-[:checked]:border-bright-sun-400 border-mine-shaft-800 rounded-lg" autoContrast value="EMPLOYER" label="Работодатель" />
+                    <Radio className="w-[160px] py-4 px-6 border hover:bg-mine-shaft-900 has-[:checked]:bg-bright-sun-400/5 has-[:checked]:border-bright-sun-400 border-mine-shaft-800 rounded-lg" autoContrast value="UNIVERSITY" label="Университет" />
                 </Group>
             </Radio.Group>
             {/* <Checkbox autoContrast label={<>I accept{' '}<Anchor>terms & conditions</Anchor></>} /> */}
-            <Button loading={loading} onClick={handleSubmit} autoContrast variant="filled">Sign up</Button>
-            <div className="mx-auto">Have an account? <span className="text-bright-sun-400 hover:underline cursor-pointer" onClick={() => { navigate("/login"); setFormError(form); setData(form) }}>Login</span></div>
+            <Button loading={loading} onClick={handleSubmit} autoContrast variant="filled">Зарегистрироваться</Button>
+            <div className="mx-auto">Уже есть аккаунт? <span className="text-bright-sun-400 hover:underline cursor-pointer" onClick={() => { navigate("/login"); setFormError(form); setData(form) }}>Войти</span></div>
         </div></>
 }
 export default SignUp;

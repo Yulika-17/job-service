@@ -68,9 +68,9 @@ const TalentCard = (props: any) => {
         <Divider color="mineShaft.7" size="xs" />
         {
             props.invited ? <div className="flex gap-1 text-mine-shaft-200 text-sm items-center">
-                <IconCalendarMonth stroke={1.5} />Interview: {formatInterviewTime(props.interviewTime)}
+                <IconCalendarMonth stroke={1.5} />Собеседование: {formatInterviewTime(props.interviewTime)}
             </div> : <div className="flex justify-between">
-                <div className="text-mine-shaft-300">Exp: {props.totalExp?props.totalExp:1} Years</div>
+                <div className="text-mine-shaft-300">Опыт: {props.totalExp?props.totalExp:1} года</div>
                 <div className="text-xs flex gap-1 items-center text-mine-shaft-400">
                     <IconMapPin className="h-5 w-5" stroke={1.5} /> {profile?.location}
                 </div>
@@ -81,11 +81,11 @@ const TalentCard = (props: any) => {
             {
                 !props.invited && <>
                     <Link to={`/talent-profile/${profile?.id}`}>
-                        <Button color="brightSun.4" variant="outline" fullWidth>Profile</Button>
+                        <Button color="brightSun.4" variant="outline" fullWidth>Профиль</Button>
                     </Link>
 
                     <div>
-                        {props.posted ? <Button onClick={open} rightSection={<IconCalendarMonth className="w-5 h-5" />} color="brightSun.4" variant="light" fullWidth>Schedule</Button> : <Button color="brightSun.4" variant="light" fullWidth>Message</Button>}
+                        {props.posted ? <Button onClick={open} rightSection={<IconCalendarMonth className="w-5 h-5" />} color="brightSun.4" variant="light" fullWidth>Назначить</Button> : <Button color="brightSun.4" variant="light" fullWidth>Сообщение</Button>}
                     </div>
                 </>
             }{
@@ -93,36 +93,36 @@ const TalentCard = (props: any) => {
                 props.invited && <>
                     <div>
 
-                        <Button color="brightSun.4" onClick={() => handleOffer("OFFERED")} variant="outline" fullWidth>Accept</Button>
+                        <Button color="brightSun.4" onClick={() => handleOffer("OFFERED")} variant="outline" fullWidth>Принять</Button>
                     </div>
                     <div>
 
-                        <Button color="brightSun.4" onClick={() => handleOffer("REJECTED")} variant="light" fullWidth>Reject</Button>
+                        <Button color="brightSun.4" onClick={() => handleOffer("REJECTED")} variant="light" fullWidth>Отклонить</Button>
                     </div>
                 </>
             }
         </div>
-        {(props.invited || props.posted) && <Button color="brightSun.4" variant="filled" fullWidth onClick={openApp} autoContrast>View Application</Button>}
-        <Modal opened={opened} onClose={close} title="Schedule Interview" centered>
+        {(props.invited || props.posted) && <Button color="brightSun.4" variant="filled" fullWidth onClick={openApp} autoContrast>Просмотр отклика</Button>}
+        <Modal opened={opened} onClose={close} title="Запланировать собеседование" centered>
             <div className="flex flex-col gap-4">
-                <DateInput value={date} minDate={new Date()} onChange={setDate} label="Date" placeholder="Enter Date" />
-                <TimeInput label="Time" value={time} onChange={(event) => setTime(event.currentTarget.value)} ref={ref} onClick={() => ref.current?.showPicker()} />
-                <Button onClick={() => handleOffer("INTERVIEWING")} color="brightSun.4" variant="light" fullWidth>Schedule</Button>
+                <DateInput value={date} minDate={new Date()} onChange={setDate} label="Дата" placeholder="Введите дату" />
+                <TimeInput label="Время" value={time} onChange={(event) => setTime(event.currentTarget.value)} ref={ref} onClick={() => ref.current?.showPicker()} />
+                <Button onClick={() => handleOffer("INTERVIEWING")} color="brightSun.4" variant="light" fullWidth>Назначить</Button>
             </div>
         </Modal>
-        <Modal opened={app} onClose={closeApp} title="Application" centered>
+        <Modal opened={app} onClose={closeApp} title="Отклик" centered>
             <div className="flex flex-col gap-4">
                 <div>
                     Email: &emsp;<a className="text-bright-sun-400 hover:underline cursor-pointer text-center" href={`mailto:${props.email}`}>{props.email}</a>
                 </div>
                 <div>
-                    Website: &emsp;<a target="_blank" className="text-bright-sun-400 hover:underline cursor-pointer text-center" href={props.website}>{props.website}</a>
+                    Веб-сайт: &emsp;<a target="_blank" className="text-bright-sun-400 hover:underline cursor-pointer text-center" href={props.website}>{props.website}</a>
                 </div>
                 <div>
-                    Resume: &emsp;<span className="text-bright-sun-400 hover:underline cursor-pointer text-center" onClick={() => openPDF(props.resume)}>{props.name}</span>
+                    Резюме: &emsp;<span className="text-bright-sun-400 hover:underline cursor-pointer text-center" onClick={() => openPDF(props.resume)}>{props.name}</span>
                 </div>
                 <div>
-                    Cover Letter: &emsp;<div>{props.coverLetter}</div>
+                    Сопроводительное письмо: &emsp;<div>{props.coverLetter}</div>
                 </div>
             </div>
         </Modal>

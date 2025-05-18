@@ -13,7 +13,7 @@ const ApplyJobComp = (props:any) => {
                 </div>
                 <div className="flex flex-col gap-1">
                     <div className="font-semibold text-2xl">{props.jobTitle}</div>
-                    <div className="text-lg text-mine-shaft-300">{props.company} &bull; {timeAgo(props.postTime)} &bull; {props.applicants?props.applicants.length:0} Applicants</div>
+                    <div className="text-lg text-mine-shaft-300">{props.company} &bull; {timeAgo(props.postTime)} &bull; {props.applicants?props.applicants.length:0} студентов</div>
                 </div>
             </div>
         </div>

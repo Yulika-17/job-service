@@ -5,7 +5,7 @@ import { studentFilters } from "../../Data/JobsData";
 
 const AllFiltersModal = ({ opened, close }: { opened: boolean, close: () => void }) => {
     return (
-        <Modal opened={opened} onClose={close} title="All Filters" size="lg" scrollAreaComponent={ScrollArea.Autosize}>
+        <Modal opened={opened} onClose={close} title="Все фильтры" size="lg" scrollAreaComponent={ScrollArea.Autosize}>
             <div className="grid grid-cols-2 gap-4">
                 {studentFilters.map((filter, index) => (
                     <div key={index} className="col-span-1">
@@ -16,10 +16,10 @@ const AllFiltersModal = ({ opened, close }: { opened: boolean, close: () => void
             <Divider my="md" />
             <Group justify="flex-end">
                 <Button variant="outline" leftSection={<IconX size={18} />} onClick={close}>
-                    Cancel
+                    Выйти
                 </Button>
                 <Button color="brightSun.4" onClick={close}>
-                    Apply Filters
+                    Применить фильтры
                 </Button>
             </Group>
         </Modal>

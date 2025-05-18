@@ -4,12 +4,12 @@ import { IconAdjustments } from '@tabler/icons-react';
 import { useDispatch } from 'react-redux';
 import { updateSort } from '../../Slices/SortSlice';
 
-const opt = ['Relevance', 'Most Recent', 'Salary: Low to High', 'Salary: High to Low'];
-const talentSort = ['Relevance', 'Experience: Low to High', 'Experience: High to Low'];
+const opt = ['По соответствию', 'Сначала новые', 'Зарплата: по возрастанию', 'Зарплата: по убыванию'];
+const talentSort = ['По соответствию', 'Опыт: по возрастанию', 'Опыт: по убыванию'];
 
 const Sort = (props: any) => {
   const dispatch = useDispatch();
-  const [selectedItem, setSelectedItem] = useState<string | null>('Relevance');
+  const [selectedItem, setSelectedItem] = useState<string | null>('По соответствию');
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
   });
