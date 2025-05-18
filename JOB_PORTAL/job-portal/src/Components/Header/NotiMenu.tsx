@@ -44,7 +44,7 @@ const NotiMenu = () => {
                     </Notification>
                     )}
                 {
-                    notifications.length == 0 && <div className="text-center text-mine-shaft-300">No Notifications</div>
+                    notifications.length == 0 && <div className="text-center text-mine-shaft-300">Нет уведомлений</div>
                 }
             </div>
 

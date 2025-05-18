@@ -26,7 +26,7 @@ const Card = (props: any) => {
                 </div>
                 <div className="flex flex-col gap-1">
                     <div className="font-semibold">{props.jobTitle}</div>
-                    <div className="text-xs text-mine-shaft-300">{props.company} &bull; {props.applicants ? props.applicants.length : 0} Applicants</div>
+                    <div className="text-xs text-mine-shaft-300">{props.company} &bull; {props.applicants ? props.applicants.length : 0} студентов</div>
                 </div>
             </div>
             {profile.savedJobs?.includes(props.id) ? <IconBookmarkFilled onClick={handleSaveJob} className="cursor-pointer text-bright-sun-400" stroke={1.5} /> : <IconBookmark onClick={handleSaveJob} className="cursor-pointer hover:text-bright-sun-400 text-mine-shaft-300" stroke={1.5} />}
@@ -42,25 +42,25 @@ const Card = (props: any) => {
         </div>
         <Divider color="mineShaft.7" size="xs" />
         <div className="flex justify-between">
-            <div className="font-semibold text-mine-shaft-200">&#8377;{props.packageOffered} LPA</div>
+            <div className="font-semibold text-mine-shaft-200">₽{props.packageOffered} тыс.</div>
             <div className="text-xs flex gap-1 items-center text-mine-shaft-400">
-                <IconClockHour3 className="h-5 w-5" stroke={1.5} /> {props.applied || props.interviewing ? "Applied" : props.offered ? "Interviewed" : "Posted"} {timeAgo(props.postTime)}
+                <IconClockHour3 className="h-5 w-5" stroke={1.5} /> {props.applied || props.interviewing ? "Отклик:" : props.offered ? "Собес:" : "Опубл."} {timeAgo(props.postTime)}
             </div>
         </div>
         {(props.offered || props.interviewing) && <Divider color="mineShaft.7" size="xs" />}
         {
             props.offered && <div className="flex gap-2">
-                <Button color="brightSun.4" variant="outline" fullWidth>Accept</Button>
-                <Button color="brightSun.4" variant="light" fullWidth>Reject</Button>
+                <Button color="brightSun.4" variant="outline" fullWidth>Принять</Button>
+                <Button color="brightSun.4" variant="light" fullWidth>Отклонить</Button>
             </div>
         }
         {
             props.interviewing && <div className="flex gap-1 text-sm items-center">
-                <IconCalendarMonth className="text-bright-sun-400 w-5 h-5" stroke={1.5} /> Sun, 25 August &bull; <span className="text-mine-shaft-400">10:00 AM</span>
+                <IconCalendarMonth className="text-bright-sun-400 w-5 h-5" stroke={1.5} /> Вс, 25 мая &bull; <span className="text-mine-shaft-400">10:00</span>
             </div>
         }
         <Link to={`/jobs/${props.id}`}>
-            <Button fullWidth color="brightSun.4" variant="outline">View Job</Button>
+            <Button fullWidth color="brightSun.4" variant="outline">Подробнее</Button>
         </Link>
     </div>
 }

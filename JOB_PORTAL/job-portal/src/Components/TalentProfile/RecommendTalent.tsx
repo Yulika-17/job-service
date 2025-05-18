@@ -24,7 +24,7 @@ const RecommendTalent = (props: any) => {
             });
         }, []);
     return <div>
-        <div className="text-xl font-semibold mb-5">Recommended Talent</div>
+        <div className="text-xl font-semibold mb-5">Рекомендуемые студенты</div>
         <div className="flex flex-col flex-wrap gap-5 justify-between">
             {
                 talents?.map((talent: any, index: any) => index < 4 && id != talent.id && <TalentCard key={index} {...talent} />)

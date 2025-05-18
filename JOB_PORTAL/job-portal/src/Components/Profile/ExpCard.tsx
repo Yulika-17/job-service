@@ -17,7 +17,7 @@ const ExpCard=(props:any)=>{
         // let updatedProfile={...profile};
         // updatedProfile.experiences=updatedProfile.experiences.filter((exp:any, index:number)=>index!==props.index);
         dispatch(changeProfile(updatedProfile));
-        successNotification("Success","Experience Deleted Successfully");
+        successNotification("Успех","Опыт работы успешно удалён");
     }
     return !edit?<div className="flex flex-col gap-2">
         <div className="flex justify-between">
@@ -30,14 +30,14 @@ const ExpCard=(props:any)=>{
                     <div className="text-sm text-mine-shaft-300">{props.company} &bull; {props.location}</div>
                 </div>
             </div>
-            <div className="text-sm text-mine-shaft-300">{formatDate(props.startDate)} - {props.working?"Present":formatDate(props.endDate)}</div>
+            <div className="text-sm text-mine-shaft-300">{formatDate(props.startDate)} - {props.working?"По настоящее время":formatDate(props.endDate)}</div>
         </div>
         <div className="text-sm text-mine-shaft-300 text-justify">
             {props.description}
         </div>
         {props.edit&&<div className="flex gap-5">
-            <Button onClick={()=>setEdit(true)} color="brightSun.4" variant="outline">Edit</Button>
-            <Button onClick={handleDelete} color="red.8" variant="light">Delete</Button>
+            <Button onClick={()=>setEdit(true)} color="brightSun.4" variant="outline">Редактировать</Button>
+            <Button onClick={handleDelete} color="red.8" variant="light">Удалить</Button>
         </div>}
     </div>:<ExpInput {...props} setEdit={setEdit} />
 }

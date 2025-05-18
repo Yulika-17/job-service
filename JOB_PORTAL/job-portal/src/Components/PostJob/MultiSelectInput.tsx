@@ -80,7 +80,7 @@ const MultiSelectInput = (props: any) => {
                         <ScrollArea.Autosize mah={200} type="scroll">
                             {options}
                             {!exactOptionMatch && search.trim().length > 0 && (
-                                <Combobox.Option value="$create">+ Create "{search}"</Combobox.Option>
+                                <Combobox.Option value="$create">+ Создать "{search}"</Combobox.Option>
                             )}
                         </ScrollArea.Autosize>
                     </Combobox.Options>

@@ -41,14 +41,14 @@ const JobHistory = () => {
         setActiveTab(value);
     }
     return <div>
-        <div className="text-2xl font-semibold mb-5">Job History</div>
+        <div className="text-2xl font-semibold mb-5">История откликов</div>
         <div>
             <Tabs value={activeTab} onChange={handleTabChange} variant="outline" radius="lg" autoContrast>
                 <Tabs.List className="[&_button]:!text-lg font-semibold mb-5 [&_button[data-active='true']]:text-bright-sun-400">
-                    <Tabs.Tab value="APPLIED">Applied</Tabs.Tab>
-                    <Tabs.Tab value="SAVED">Saved</Tabs.Tab>
-                    <Tabs.Tab value="OFFERED">Offered</Tabs.Tab>
-                    <Tabs.Tab value="INTERVIEWING">Interviewing</Tabs.Tab>
+                    <Tabs.Tab value="APPLIED">Откликнутые</Tabs.Tab>
+                    <Tabs.Tab value="SAVED">Сохранённые</Tabs.Tab>
+                    <Tabs.Tab value="OFFERED">Предложенные</Tabs.Tab>
+                    <Tabs.Tab value="INTERVIEWING">Собеседования</Tabs.Tab>
                 </Tabs.List>
 
                 <Tabs.Panel value={activeTab} className="[&>div]:w-full">

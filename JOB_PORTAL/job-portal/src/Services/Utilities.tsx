@@ -1,7 +1,12 @@
+// const formatDate = (dateString: string) => {
+//     const date = new Date(dateString);
+//     const options = { year: 'numeric' as const, month: 'short' as const };
+//     return date.toLocaleString('en-US', options);
+// }
 const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     const options = { year: 'numeric' as const, month: 'short' as const };
-    return date.toLocaleString('en-US', options);
+    return date.toLocaleString('ru-RU', options);
 }
 // function timeAgo(timestamp: string) {
 //     const now = new Date();

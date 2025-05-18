@@ -33,13 +33,13 @@ const TalentCard = (props: any) => {
             interview = { ...interview, interviewTime: date };
         }
         changeAppStatus(interview).then((res) => {
-            if(status=="INTERVIEWING") successNotification("Interview Scheduled", "Interview Scheduled Successfully");
-            else if(status=="OFFERED") successNotification("Offered", "Offer had been Sent Successfully");
-            else successNotification("Rejected", "Applicant had been Rejected");
+            if (status == "INTERVIEWING") successNotification("Собеседование запланировано", "Собеседование успешно запланировано");
+            else if (status == "OFFERED") successNotification("Предложение", "Предложение успешно отправлено");
+            else successNotification("Отклонено", "Студент отклонён");
             window.location.reload();
         }).catch((err) => {
             console.log(err);
-            errorNotification("Error", err.response.data.errorMessage);
+            errorNotification("Ошибка", err.response.data.errorMessage);
         })
     }
     return <div className="p-4 rounded-xl bg-mine-shaft-900   hover:shadow-[0_0_5px_1px_yellow] !shadow-bright-sun-400  transition duration-300 ease-in-out w-96 sm-mx:w-full flex flex-col gap-3">
@@ -70,7 +70,7 @@ const TalentCard = (props: any) => {
             props.invited ? <div className="flex gap-1 text-mine-shaft-200 text-sm items-center">
                 <IconCalendarMonth stroke={1.5} />Собеседование: {formatInterviewTime(props.interviewTime)}
             </div> : <div className="flex justify-between">
-                <div className="text-mine-shaft-300">Опыт: {props.totalExp?props.totalExp:1} года</div>
+                <div className="text-mine-shaft-300">Опыт: {profile?.totalExp ? profile.totalExp : 0} года</div>
                 <div className="text-xs flex gap-1 items-center text-mine-shaft-400">
                     <IconMapPin className="h-5 w-5" stroke={1.5} /> {profile?.location}
                 </div>

@@ -105,8 +105,8 @@ const Jobs = () => {
         if (filter["Опыт работы"]?.length > 0) filtered = filtered.filter((job: any) => 
             filter["Опыт работы"].some((x: any) => job.experience?.toLowerCase().includes(x.toLowerCase())));
         
-        if (filter["Формат занятости"]?.length > 0) filtered = filtered.filter((job: any) => 
-            filter["Формат занятости"].some((x: any) => job.jobType?.toLowerCase().includes(x.toLowerCase())));
+        if (filter["Тип занятости"]?.length > 0) filtered = filtered.filter((job: any) => 
+            filter["Тип занятости"].some((x: any) => job.jobType?.toLowerCase().includes(x.toLowerCase())));
         
         if (filter.salary?.length === 2) filtered = filtered.filter((job: any) => 
             filter.salary[0] <= job.packageOffered && job.packageOffered <= filter.salary[1]);

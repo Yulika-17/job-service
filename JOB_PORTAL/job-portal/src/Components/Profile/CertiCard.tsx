@@ -13,7 +13,7 @@ const CertiCard = (props: any) => {
         certis.splice(props.index, 1);
         let updatedProfile={...profile, certifications:certis};
         dispatch(changeProfile(updatedProfile));
-        successNotification("Success","Certificate Deleted Successfully");
+        successNotification("Успех","Сертификат успешно удалён");
     }
     // const handleDelete=()=>{
     //     let updatedProfile={...profile};
@@ -34,7 +34,7 @@ const CertiCard = (props: any) => {
             </div>
             <div className="flex items-center gap-2">
                 <div className="flex flex-col items-end">
-                    <div className="text-sm text-mine-shaft-300">Issued {formatDate(props.issueDate)}</div>
+                    <div className="text-sm text-mine-shaft-300">Выдано {formatDate(props.issueDate)}</div>
                     <div className="text-sm text-mine-shaft-300">ID: {props.certificateId}</div>
                 </div>
                 {props.edit&&<ActionIcon onClick={handleDelete} size="lg" color="red.8" variant="subtle">

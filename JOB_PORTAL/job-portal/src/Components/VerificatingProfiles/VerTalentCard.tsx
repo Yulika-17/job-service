@@ -15,15 +15,15 @@ const VerTalentCard = (props: any) => {
             verifyProfile(props.id).then(() => {
                 // Сохраняем ID проверенного профиля в localStorage
                 localStorage.setItem(`verifiedProfile-${props.id}`, "true");
-                successNotification("Verified", "Profile has been verified");
+                successNotification("Подтверждено", "Профиль был подтверждён");
                 window.location.reload();
             }).catch((err) => {
-                errorNotification("Error", err.response?.data?.errorMessage || "Failed to verify");
+                errorNotification("Ошибка", err.response?.data?.errorMessage || "Не удалось подтвердить");
             });
         } else {
             // Сохраняем ID отклоненного профиля в localStorage
             localStorage.setItem(`rejectedProfile-${props.id}`, "true");
-            successNotification("Rejected", "Profile has been rejected");
+            successNotification("Отклонено", "Профиль был отклонён");
             window.location.reload();  // Перезагружаем страницу, чтобы обновить состояние
         }
     };
@@ -69,7 +69,7 @@ const VerTalentCard = (props: any) => {
             <Divider color="mineShaft.7" size="xs" />
 
             <div className="flex justify-between">
-                <div className="text-mine-shaft-300">Exp: {props.totalExp ? props.totalExp : 1} Years</div>
+                <div className="text-mine-shaft-300">Опыт: {props.totalExp ? props.totalExp : 1} года</div>
                 <div className="text-xs flex gap-1 items-center text-mine-shaft-400">
                     <IconMapPin className="h-5 w-5" stroke={1.5} /> {props.location}
                 </div>
@@ -80,18 +80,18 @@ const VerTalentCard = (props: any) => {
             <div className="flex [&>*]:w-1/2 [&>*]:p-1">
                 <div>
                     <Button color="brightSun.4" variant="outline" fullWidth onClick={() => handleVerification("ACCEPT")}>
-                        Accept
+                        Принять
                     </Button>
                 </div>
                 <div>
                     <Button color="brightSun.4" variant="light" fullWidth onClick={() => handleVerification("REJECT")}>
-                        Reject
+                        Отклонить
                     </Button>
                 </div>
             </div>
             <Link to={`/talent-profile/${props.id}`}>
                 <Button color="brightSun.4" variant="filled" autoContrast fullWidth>
-                    Profile
+                    Профиль
                 </Button>
             </Link>
         </div>

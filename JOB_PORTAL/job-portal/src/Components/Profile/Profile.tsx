@@ -21,7 +21,7 @@ const Profile = () => {
         let picture: any = await getBase64(image);
         let updatedProfile = { ...profile, picture: picture.split(',')[1] };
         dispatch(changeProfile(updatedProfile));
-        successNotification("Success", "Profile Picture Updated Successfully");
+        successNotification("Успех", "Фотография профиля успешно обновлена");
     };
     return <div className="w-4/5 mx-auto">
         <div className="" >

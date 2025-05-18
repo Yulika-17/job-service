@@ -22,11 +22,11 @@ const PostedJobDesc = (props: any) => {
             <div>
                 <Tabs variant="outline" autoContrast radius="lg" value={tab} onChange={handleTabChange}>
                     <Tabs.List className="[&_button]:!text-xl font-semibold mb-5 [&_button[data-active='true']]:!border-b-mine-shaft-950 [&_button[data-active='true']]:text-bright-sun-400">
-                        <Tabs.Tab value="overview">Overview</Tabs.Tab>
-                        <Tabs.Tab value="applicants">Applicants</Tabs.Tab>
-                        <Tabs.Tab value="invited">Invited</Tabs.Tab>
-                        <Tabs.Tab value="offered">Offered</Tabs.Tab>
-                        <Tabs.Tab value="rejected">Rejected</Tabs.Tab>
+                        <Tabs.Tab value="overview">Обзор</Tabs.Tab>
+                        <Tabs.Tab value="applicants">Кандидаты</Tabs.Tab>
+                        <Tabs.Tab value="invited">Приглашённые</Tabs.Tab>
+                        <Tabs.Tab value="offered">Предложения</Tabs.Tab>
+                        <Tabs.Tab value="rejected">Отклонённые</Tabs.Tab>
                     </Tabs.List>
 
                     <Tabs.Panel value="overview" className="[&>div]:w-full">
@@ -35,34 +35,34 @@ const PostedJobDesc = (props: any) => {
                     <Tabs.Panel value="applicants">
                         <div className="flex mt-10 flex-wrap gap-5 justify-around">
                             {
-                                arr?.length?arr.map((talent: any, index: any) => <TalentCard key={index} {...talent} posted={true} />):"No Applicants Yet"
+                                arr?.length?arr.map((talent: any, index: any) => <TalentCard key={index} {...talent} posted={true} />):"Кандидатов пока нет"
                             }
                         </div>
                     </Tabs.Panel>
                     <Tabs.Panel value="invited">
                         <div className="flex mt-10 flex-wrap gap-5 justify-around">
                             {
-                                arr?.length?arr.map((talent: any, index: any) => <TalentCard key={index} {...talent} invited={true} />):"No Applicants Invited Yet"
+                                arr?.length?arr.map((talent: any, index: any) => <TalentCard key={index} {...talent} invited={true} />):"Приглашённых пока нет"
                             }
                         </div>
                     </Tabs.Panel>
                     <Tabs.Panel value="offered">
                         <div className="flex mt-10 flex-wrap gap-5 justify-around">
                             {
-                                arr?.length?arr.map((talent: any, index: any) => <TalentCard key={index} {...talent} offered />):"No Applicants Offered Yet"
+                                arr?.length?arr.map((talent: any, index: any) => <TalentCard key={index} {...talent} offered />):"Предложений пока нет"
                             }
                         </div>
                     </Tabs.Panel>
                     <Tabs.Panel value="rejected">
                         <div className="flex mt-10 flex-wrap gap-5 justify-around">
                             {
-                                arr?.length?arr.map((talent: any, index: any) => <TalentCard key={index} {...talent} offered />):"No Applicants Rejected Yet"
+                                arr?.length?arr.map((talent: any, index: any) => <TalentCard key={index} {...talent} offered />):"Отклонённых пока нет"
                             }
                         </div>
                     </Tabs.Panel>
                 </Tabs>
             </div>
-        </> : <div className="text-2xl font-semibold flex min-h-[70vh] justify-center items-center">No Job Selected</div>}
+        </> : <div className="text-2xl font-semibold flex min-h-[70vh] justify-center items-center">Вакансия не выбрана</div>}
     </div>
 }
 export default PostedJobDesc;

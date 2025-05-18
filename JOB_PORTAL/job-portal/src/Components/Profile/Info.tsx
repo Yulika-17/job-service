@@ -29,7 +29,7 @@ const Info = () => {
         setEdit(false);
         let updatedProfile = { ...profile, ...form.getValues() };
         dispatch(changeProfile(updatedProfile));
-        successNotification("Success", "Profile Updated Successfully");
+        successNotification("Успешно", "Профиль успешно обновлён");
     }
     const form = useForm({
         mode: 'controlled',
@@ -52,11 +52,11 @@ const Info = () => {
         {
             edit ? <><div className="flex gap-10 [&>*]:w-1/2 my-3">
                 <SelectInput form={form} name="jobTitle" {...select[0]} />
-                <SelectInput form={form} name="university" {...select[1]} />
+                <SelectInput form={form} name="university" {...select[3]} />
             </div>
                 <div className="flex gap-10 [&>*]:w-1/2 my-3">
                     <SelectInput form={form} name="location" {...select[2]} />
-                    <NumberInput label="Experience" withAsterisk hideControls clampBehavior="strict" min={1} max={50} {...form.getInputProps('totalExp')} />
+                    <NumberInput label="Опыт работы" withAsterisk hideControls clampBehavior="strict" min={1} max={50} {...form.getInputProps('totalExp')} />
                 </div>
             </> :
                 <>
@@ -65,7 +65,7 @@ const Info = () => {
                         <IconMapPin className="h-5 w-5" stroke={1.5} /> {profile.location}
                     </div>
                     <div className="text-lg flex gap-1 items-center text-mine-shaft-300">
-                        <IconBriefcase className="h-5 w-5" stroke={1.5} />Experience: {profile.totalExp} Years
+                        <IconBriefcase className="h-5 w-5" stroke={1.5} />Опыт работы: {profile.totalExp} года
                     </div>
                 </>
         }

@@ -20,11 +20,11 @@ const CertiInput = (props: any) => {
             issueDate:new Date(),
             certificateId:''
         },
-        validate:{
-            name: isNotEmpty('Title cannot be empty'),
-            issuer: isNotEmpty('Issuer cannot be empty'),
-            issueDate: isNotEmpty('Issue Date cannot be empty'),
-            certificateId: isNotEmpty('Certificate ID cannot be empty')
+        validate: {
+            name: isNotEmpty('Поле "Название сертификата" не может быть пустым'),
+            issuer: isNotEmpty('Поле "Компания" не может быть пустым'),
+            issueDate: isNotEmpty('Поле "Дата выдачи" не может быть пустым'),
+            certificateId: isNotEmpty('Поле "ID сертификата" не может быть пустым')
         }
     });
     const handleSave = () => {
@@ -44,21 +44,21 @@ const CertiInput = (props: any) => {
         let updatedProfile = { ...profile, certifications: certis };
         props.setEdit(false);
         dispatch(changeProfile(updatedProfile));
-        successNotification("Success", `Certificate Added Successfully`);
+        successNotification("Успех", `Сертификат успешно добавлен`);
     }
     return <div className="flex flex-col gap-3">
-        <div className="text-lg font-semibold">Add Certificate</div>
+        <div className="text-lg font-semibold">Добавить сертификат</div>
         <div className="flex gap-10 [&>*]:w-1/2">
-            <TextInput {...form.getInputProps("name")} label="Title" withAsterisk placeholder="Enter title" />
+            <TextInput {...form.getInputProps("name")} label="Название" withAsterisk placeholder="Введите название" />
             <SelectInput form={form} name="issuer" {...select[1]} />
         </div>
         <div className="flex gap-10 [&>*]:w-1/2">
-            <MonthPickerInput {...form.getInputProps("issueDate")} withAsterisk maxDate={new Date()} label="Issue Date" placeholder="Pick date" />
-            <TextInput {...form.getInputProps("certificateId")} label="Certificate ID" withAsterisk placeholder="Enter ID" />
+            <MonthPickerInput {...form.getInputProps("issueDate")} withAsterisk maxDate={new Date()} label="Дата выдачи" placeholder="Выберите дату" />
+            <TextInput {...form.getInputProps("certificateId")} label="ID сертификата" withAsterisk placeholder="Введите ID" />
         </div>
         <div className="flex gap-5">
-            <Button onClick={handleSave} color="green.8" variant="light">Save</Button>
-            <Button color="red.8" onClick={() => props.setEdit(false)} variant="light">Cancel</Button>
+            <Button onClick={handleSave} color="green.8" variant="light">Сохранить</Button>
+            <Button color="red.8" onClick={() => props.setEdit(false)} variant="light">Отмена</Button>
         </div>
     </div>
 }

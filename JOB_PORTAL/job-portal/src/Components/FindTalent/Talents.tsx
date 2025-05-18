@@ -38,10 +38,10 @@ const Talents = () => {
         });
     }, []);
     useEffect(()=>{
-        if(sort=="Experience: Low to High"){
+        if(sort=="Опыт: по возрастанию"){
             setTalents([...talents].sort((a: any, b: any) => a.totalExp - b.totalExp));
         }
-        else if(sort=="Experience: High to Low"){
+        else if(sort=="Опыт: по убыванию"){
             setTalents([...talents].sort((a: any, b: any) => b.totalExp - a.totalExp));
         }
 
@@ -58,13 +58,13 @@ const Talents = () => {
     }, [filter, talents])
     return <div className="px-5 py-5">
         <div className="flex justify-between mt-5">
-            <div className="text-2xl font-semibold">Talents</div>
+            <div className="text-2xl font-semibold">Студенты</div>
             <Sort />
         </div>
         <div className="flex mt-10 flex-wrap gap-5 justify-between">
             {
                 filteredTalents.map((talent: any, index: any) => <TalentCard key={index} {...talent} />)
-                // filteredTalents?.length?filteredTalents.map((talent: any, index: any) => <TalentCard key={index} {...talent} />):<div className="text-xl font-semibold">No Talents Found</div>
+                // filteredTalents?.length?filteredTalents.map((talent: any, index: any) => <TalentCard key={index} {...talent} />):<div className="text-xl font-semibold">Таланты не найдены</div>
             }
         </div>
     </div>

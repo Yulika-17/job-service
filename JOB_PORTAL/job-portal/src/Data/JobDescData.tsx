@@ -1,10 +1,10 @@
 import { IconBriefcase, IconCalendar, IconCalendarClock, IconCertificate, IconClock, IconDeviceLaptop, IconLanguage, IconLighter, IconListCheck, IconMapPin, IconPremiumRights, IconRecharging, IconSchool, IconTools } from "@tabler/icons-react"
 
 const card = [
-    { name: "Location", icon: IconMapPin, value: "New York", id: "location" },
-    { name: "Experience", icon: IconBriefcase, value: "Expert", id: "experience" },
-    { name: "Salary", icon: IconPremiumRights, value: "48 LPA", id: "packageOffered" },
-    { name: "Job Type", icon: IconRecharging, value: "Full Time", id: "jobType" },
+    { name: "Город", icon: IconMapPin, value: "New York", id: "location" },
+    { name: "Опыт работы", icon: IconBriefcase, value: "Expert", id: "experience" },
+    { name: "Заработная плата", icon: IconPremiumRights, value: "48 LPA", id: "packageOffered" },
+    { name: "Тип занятости", icon: IconRecharging, value: "Full Time", id: "jobType" },
 
     { name: "Work Format", icon: IconDeviceLaptop, value: "Office", id: "workFormat" },
     { name: "Education Level", icon: IconSchool, value: "Master's", id: "educationLevel" },

@@ -30,11 +30,9 @@ const Header = () => {
             }
         }
         if (user?.profileId) {
-            // dispatch(showOverlay())
             getProfile(user?.profileId).then((res) => {
                 dispatch(setProfile(res));
             }).catch((err) => console.log(err))
-            // .finally(()=>dispatch(hideOverlay()));
         }
     }, [token, navigate]);
     return location.pathname != "/signup" && location.pathname != "/login" ? <div className="w-full bg-mine-shaft-950 px-6 text-white h-20 flex justify-between items-center font-['montserrat']">

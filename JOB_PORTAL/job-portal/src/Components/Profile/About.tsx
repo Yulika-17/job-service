@@ -21,17 +21,17 @@ const About = () => {
         setEdit(false);
         let updatedProfile = { ...profile, about:about };
         dispatch(changeProfile(updatedProfile));
-        successNotification("Success", "About Updated Successfully");
+        successNotification("Успех", "Информация о себе успешно обновлена");
     }
     return <div>
-        <div className="text-2xl font-semibold mb-3 flex justify-between">About <div>
+        <div className="text-2xl font-semibold mb-3 flex justify-between">О себе <div>
             {edit && <ActionIcon onClick={handleSave} size="lg" color="green.8" variant="subtle">
                 <IconCheck className="h-4/5 w-4/5" stroke={1.5} /></ActionIcon>}
             <ActionIcon onClick={handleClick} size="lg" color={edit ? "red.8" : "brightSun.4"} variant="subtle">
                 {edit ? <IconX className="h-4/5 w-4/5" stroke={1.5} /> : <IconPencil className="h-4/5 w-4/5" stroke={1.5} />}</ActionIcon>
         </div></div>
         {
-            edit ? <Textarea value={about} placeholder="Enter about yourself..." autosize minRows={3} onChange={(event) => setAbout(event.currentTarget.value)} /> : <div className="text-sm text-mine-shaft-300 text-justify">{profile?.about}</div>
+            edit ? <Textarea value={about} placeholder="Расскажите о себе..." autosize minRows={3} onChange={(event) => setAbout(event.currentTarget.value)} /> : <div className="text-sm text-mine-shaft-300 text-justify">{profile?.about}</div>
         }
     </div>
 }

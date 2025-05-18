@@ -13,7 +13,7 @@ const CertiCard = (props: any) => {
                 </div>
             </div>
             <div className="flex flex-col items-end">
-                <div className="text-sm text-mine-shaft-300">Issued {formatDate(props.issueDate)}</div>
+                <div className="text-sm text-mine-shaft-300">Выдано {formatDate(props.issueDate)}</div>
                 <div className="text-sm text-mine-shaft-300">ID: {props.certificateId}</div>
             </div>
         </div>

@@ -55,39 +55,39 @@ const PostJob = () => {
             startPeriod: '' // Новый фильтр
         },
         validate: {
-            jobTitle: isNotEmpty('Title cannot be empty'),
-            company: isNotEmpty('Company cannot be empty'),
-            location: isNotEmpty('Location cannot be empty'),
-            about: isNotEmpty('About cannot be empty'),
-            description: isNotEmpty('Description cannot be empty'),
-            experience: isNotEmpty('Experience cannot be empty'),
-            jobType: isNotEmpty('Job Type cannot be empty'),
-            packageOffered: isNotEmpty('Salary cannot be empty'),
-            skillsRequired: isNotEmpty('Skills cannot be empty')
+            jobTitle: isNotEmpty('Название должности не может быть пустым'),
+            company: isNotEmpty('Компания не может быть пустой'),
+            location: isNotEmpty('Город не может быть пустой'),
+            about: isNotEmpty('Описание не может быть пустым'),
+            description: isNotEmpty('Полное описание не может быть пустым'),
+            experience: isNotEmpty('Опыт не может быть пустым'),
+            jobType: isNotEmpty('Тип занятости не может быть пустым'),
+            packageOffered: isNotEmpty('Заработная плата не может быть пустой'),
+            skillsRequired: isNotEmpty('Навыки не могут быть пустыми')
         }
     });
     const handlePost = () => {
         form.validate();
         if (!form.isValid()) return;
         postJob({ ...form.getValues(), id, postedBy: user.id, jobStatus: "ACTIVE" }).then((res) => {
-            successNotification("Success", "Job Posted Successfully");
+            successNotification("Успешно", "Вакансия успешно опубликована");
             navigate(`/posted-jobs/${res.id}`);
         }).catch((err) => {
             console.log(err);
-            errorNotification("Error", err.response.data.errorMessage);
+            errorNotification("Ошибка", err.response.data.errorMessage);
         })
     }
     const handleDraft = () => {
         postJob({ ...form.getValues(), id, postedBy: user.id, jobStatus: "DRAFT" }).then((res) => {
-            successNotification("Success", "Job Drafted Successfully");
+            successNotification("Успешно", "Черновик вакансии сохранён");
             navigate(`/posted-jobs/${res.id}`);
         }).catch((err) => {
             console.log(err);
-            errorNotification("Error", err.response.data.errorMessage);
+            errorNotification("Ошибка", err.response.data.errorMessage);
         })
     }
     return <div className="px-16 py-5">
-        <div className="text-2xl font-semibold mb-5">Post a Job</div>
+        <div className="text-2xl font-semibold mb-5">Публикация вакансии</div>
         <div className="flex flex-col gap-5">
             <div className="flex gap-10 [&>*]:w-1/2">
                 <SelectInput form={form} name="jobTitle" {...select[0]} />
@@ -99,7 +99,7 @@ const PostJob = () => {
             </div>
             <div className="flex gap-10 [&>*]:w-1/2">
                 <SelectInput form={form} name="location" {...select[4]} />
-                <NumberInput {...form.getInputProps('packageOffered')} label="Salary" withAsterisk min={1} max={300} clampBehavior="strict" placeholder="Enter Salary" hideControls />
+                <NumberInput {...form.getInputProps('packageOffered')} label="Заработная плата" withAsterisk min={1} max={300} clampBehavior="strict" placeholder="Введите зарплату" hideControls />
             </div>
             <div className="flex gap-10 [&>*]:w-1/2">
                 <SelectInput form={form} name="workFormat" {...select[5]} />
@@ -108,7 +108,7 @@ const PostJob = () => {
 
             <div className="flex gap-10 [&>*]:w-1/2">
                 <MultiSelectInput form={form} name="academicCompatibility" {...multiSelect[0]} />
-                <MultiSelectInput form={form} name="taskTypes" {...multiSelect[1]}/>
+                <MultiSelectInput form={form} name="taskTypes" {...multiSelect[1]} />
             </div>
             <div className="flex gap-10 [&>*]:w-1/2">
                 <MultiSelectInput form={form} name="studentSupport" {...multiSelect[2]} />
@@ -123,15 +123,15 @@ const PostJob = () => {
                 <SelectInput form={form} name="startPeriod" {...select[14]} />
             </div>
 
-            <TagsInput {...form.getInputProps('skillsRequired')} withAsterisk label="Skills" placeholder="Enter skill" splitChars={[',', ' ', '|']} clearable acceptValueOnBlur />
-            <Textarea {...form.getInputProps("about")} withAsterisk className="my-3" label="About Job" placeholder="Enter about job..." autosize minRows={2} />
+            <TagsInput {...form.getInputProps('skillsRequired')} withAsterisk label="Навыки" placeholder="Введите навык" splitChars={[',', ' ', '|']} clearable acceptValueOnBlur />
+            <Textarea {...form.getInputProps("about")} withAsterisk className="my-3" label="О вакансии" placeholder="Введите информацию о вакансии..." autosize minRows={2} />
             <div className="[&_button[data-active='true']]:!text-bright-sun-400 [&_button[data-active='true']]:!bg-bright-sun-400/20">
-                <div className="text-sm font-medium">Job Description <span className="text-red-500">*</span></div>
+                <div className="text-sm font-medium">Описание вакансии <span className="text-red-500">*</span></div>
                 <TextEditor form={form} data={editorData} />
             </div>
             <div className="flex gap-4">
-                <Button color="brightSun.4" onClick={handlePost} variant="light">Publish Job</Button>
-                <Button color="brightSun.4" onClick={handleDraft} variant="outline">Save as Draft</Button>
+                <Button color="brightSun.4" onClick={handlePost} variant="light">Опубликовать вакансию</Button>
+                <Button color="brightSun.4" onClick={handleDraft} variant="outline">Сохранить как черновик</Button>
             </div>
         </div>
     </div>
