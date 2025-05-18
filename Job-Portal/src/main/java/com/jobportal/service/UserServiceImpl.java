@@ -24,6 +24,9 @@ import java.util.stream.Collectors;
 @Service(value = "userService")
 public class UserServiceImpl implements UserService {
 
+    private static final List<String> UNIVERSITY_DOMAINS = List.of(
+            "itmo.ru", "niuitmo.ru", "edu.hse.ru", "phystech.edu", "spbstu.ru", "urfu.ru"
+    );
     @Autowired
     private UserRepository userRepository;
 
@@ -42,8 +45,18 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private NotificationService notificationService;
 
+    private boolean isUniversityEmail(String email) {
+        return UNIVERSITY_DOMAINS.stream().anyMatch(domain -> email.toLowerCase().endsWith("@" + domain));
+    }
+
     @Override
     public UserDTO registerUser(UserDTO userDTO) throws JobPortalException {
+        //Проверяем домен только для студентов и университетов
+        String role = userDTO.getAccountType().name().toLowerCase();
+
+        if ((role.equalsIgnoreCase("APPLICANT") || role.equalsIgnoreCase("UNIVERSITY")) && !isUniversityEmail(userDTO.getEmail())) {
+            throw new JobPortalException("EMAIL_IS_INVALID");
+        }
         Optional<User> optional = userRepository.findByEmail(userDTO.getEmail());
         if (optional.isPresent()) throw new JobPortalException("USER_FOUND");
         userDTO.setProfileId(profileService.createProfile(userDTO.getEmail()));
