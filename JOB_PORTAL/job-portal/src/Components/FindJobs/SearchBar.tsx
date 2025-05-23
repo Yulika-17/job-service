@@ -1,11 +1,11 @@
 import { Divider, RangeSlider } from "@mantine/core";
 
 import { dropdownData } from "../../Data/JobsData";
-import MultiInput from "./MultiInput";
 import { useState } from "react";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { updateFilter } from "../../Slices/FilterSlice";
+import MultiInput from "./MultiInput";
 
 const SearchBar = () => {
     const dispatch = useDispatch();

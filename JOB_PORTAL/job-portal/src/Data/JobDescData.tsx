@@ -1,4 +1,4 @@
-import { IconBriefcase, IconCalendar, IconCalendarClock, IconCertificate, IconClock, IconDeviceLaptop, IconLanguage, IconLighter, IconListCheck, IconMapPin, IconPremiumRights, IconRecharging, IconSchool, IconTools } from "@tabler/icons-react"
+import { IconBriefcase, IconCalendar, IconCalendarClock, IconCertificate, IconClock, IconDeviceLaptop, IconHelpCircle, IconLanguage, IconLighter, IconListCheck, IconMapPin, IconPremiumRights, IconRecharging, IconSchool, IconTools } from "@tabler/icons-react"
 
 const card = [
     { name: "Город", icon: IconMapPin, value: "New York", id: "location" },
@@ -10,7 +10,7 @@ const card = [
     { name: "Education Level", icon: IconSchool, value: "Master's", id: "educationLevel" },
     { name: "Academic Compatibility", icon: IconCertificate, value: "Can be counted as practice", id: "academicCompatibility" },
     { name: "Task Types", icon: IconListCheck, value: "Real Tasks", id: "taskTypes" },
-    { name: "Student Support", icon: IconLighter, value: "Has Mentor", id: "studentSupport" },
+    { name: "Student Support", icon: IconHelpCircle, value: "Has Mentor", id: "studentSupport" },
     { name: "Work Language", icon: IconLanguage, value: "Russian", id: "workLanguage" },
     { name: "Equipment Access", icon: IconDeviceLaptop, value: "Provide Equipment", id: "equipmentAccess" },
     { name: "Flexibility", icon: IconClock, value: "Flexible Schedule", id: "flexibility" },

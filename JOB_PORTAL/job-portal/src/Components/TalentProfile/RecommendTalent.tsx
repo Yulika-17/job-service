@@ -15,7 +15,8 @@ const RecommendTalent = (props: any) => {
                 // Теперь получаем профили для этих пользователей
                 const profilePromises = applicants.map((user: any) => getProfile(user.profileId));
                 Promise.all(profilePromises).then((profiles) => {
-                    setTalents(profiles);  // Сохраняем только профили для пользователей с типом "APPLICANT"
+                    //setTalents(profiles);  // Сохраняем только профили для пользователей с типом "APPLICANT"
+                    setTalents(profiles.filter((talent: any) => talent.verified == true));
                 }).catch((err) => {
                     console.log(err);
                 });

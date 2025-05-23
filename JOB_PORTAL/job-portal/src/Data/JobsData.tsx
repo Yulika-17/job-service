@@ -1,32 +1,32 @@
-import { IconBriefcase, IconBuilding, IconCalendar, IconCalendarClock, IconCertificate, IconClock, IconDeviceLaptop, IconLanguage, IconLighter, IconListCheck, IconMapPin, IconRecharging, IconSchool, IconSearch, IconTools } from "@tabler/icons-react";
+import { IconBriefcase, IconBuilding, IconCalendar, IconCalendarClock, IconCertificate, IconClock, IconDeviceLaptop, IconHelpCircle, IconLanguage, IconLighter, IconListCheck, IconMapPin, IconRecharging, IconSchool, IconSearch, IconTools } from "@tabler/icons-react";
 
     // { title: "Job Title", icon: IconSearch, options: ['Designer', 'Developer', 'Product Manager', 'Marketing Specialist', 'Data Analyst', 'Sales Executive', 'Content Writer', 'Customer Support'] },
     // { title: "Location", icon: IconMapPin, options: ['Delhi', 'New York', 'San Francisco', 'London', 'Berlin', 'Tokyo', 'Sydney', 'Toronto'] },
     // { title: "Experience", icon: IconBriefcase, options: ['Entry Level', 'Intermediate', 'Expert'] },
     // { title: "Job Type", icon: IconRecharging, options: ['Full Time', 'Part Time', 'Contract', 'Freelance', 'Internship'] }
 const dropdownData = [
-  { title: "Профессия", icon: IconSearch, options: ['Разработчик', 'Дизайнер', 'Маркетолог', 'Продакт-менеджер', 'Data Analyst', 'Контент-мейкер', 'HR', 'Исследователь'] },
+  { title: "Должность", icon: IconSearch, options: ['Разработчик', 'UI/UX-дизайнер', 'Маркетолог', 'Продакт-менеджер', 'Дата-инженер', 'Системный аналитик', 'Контент-мейкер', 'HR', 'Исследователь'] },
   { title: "Город", icon: IconMapPin, options: ['Москва', 'Санкт-Петербург', 'Новосибирск', 'Онлайн', 'Другое'] },
-  { title: "Опыт работы", icon: IconBriefcase, options: ['Начальный уровень', 'Средний уровень', 'Эксперт'] },
-  { title: "Формат занятости", icon: IconRecharging, options: ['Полная', 'Частичная', 'Стажировка', 'Практика', 'Волонтёрство', 'Подработка', 'Гибкий график', 'Только на каникулах'] }
+  { title: "Опыт работы", icon: IconBriefcase, options: ['Без опыта', 'Начальный', 'Средний', 'Эксперт'] },
+  { title: "Тип занятости", icon: IconRecharging, options: ['Полная', 'Частичная', 'Стажировка', 'Проектная работа', 'Практика', 'Волонтёрство', 'Подработка'] }
 ];
 
 export const studentFilters = [
-  { title: "Профессия", icon: IconSearch, options: ['Разработчик', 'Дизайнер', 'Маркетолог', 'Продакт-менеджер', 'Data Analyst', 'Контент-мейкер', 'HR', 'Исследователь'] },
-  { title: "Город", icon: IconMapPin, options: ['Москва', 'Санкт-Петербург', 'Новосибирск', 'Онлайн', 'Другое'] },
-  { title: "Опыт работы", icon: IconBriefcase, options: ['Начальный уровень', 'Средний уровень', 'Эксперт'] },
-  { title: "Формат занятости", icon: IconRecharging, options: ['Полная', 'Частичная', 'Стажировка', 'Практика', 'Волонтёрство', 'Подработка', 'Гибкий график', 'Только на каникулах'] },
-  { title: "Формат работы", icon: IconDeviceLaptop, options: ['Офис', 'Удалёнка', 'Гибрид'] },
+  { title: "Должность", icon: IconSearch, options: ['Разработчик', 'UI/UX-дизайнер', 'Маркетолог', 'Продакт-менеджер','Дата-инженер', 'Системный аналитик', 'Контент-мейкер', 'HR', 'Исследователь'] },
+  { title: "Город", icon: IconMapPin, options: ['Москва', 'Санкт-Петербург', 'Новосибирск','Екатеринбург', 'Онлайн', 'Другое'] },
+  { title: "Опыт работы", icon: IconBriefcase, options: ['Без опыта', 'Начальный', 'Средний', 'Эксперт'] },
+  { title: "Тип занятости", icon: IconRecharging, options: ['Полная', 'Частичная', 'Стажировка', 'Проектная работа', 'Практика', 'Волонтёрство', 'Подработка'] },
+  { title: "Формат работы", icon: IconDeviceLaptop, options: ['Офис', 'Удалёнка', 'Гибрид', 'В университете'] },
   { title: "Курс / Степень", icon: IconSchool, options: ['Бакалавриат', 'Магистратура', 'Аспирантура'] },
   { title: "Навыки", icon: IconTools, options: ['JavaScript', 'Python', 'Excel', 'Figma', 'SQL', 'UI/UX Design', 'Командная работа', 'C++', 'Английский язык'] },
   { title: "Академическая совместимость", icon: IconCertificate, options: ['Можно зачесть как практику', 'Можно использовать в дипломе', 'Требуется портфолио'] },
   { title: "Тип задач", icon: IconListCheck, options: ['Учебные задачи', 'Реальные задачи', 'Исследовательские', 'Проектная работа', 'С ментором'] },
-  { title: "Поддержка студента", icon: IconLighter, options: ['Есть ментор', 'Есть обучение', 'Есть карьерный трек', 'Куратор из вуза'] },
+  { title: "Поддержка студента", icon: IconHelpCircle, options: ['Есть ментор', 'Есть обучение', 'Есть карьерный трек', 'Куратор из вуза'] },
   { title: "Язык работы", icon: IconLanguage, options: ['Русский', 'Английский', 'Неважно'] },
   { title: "Доступ к оборудованию", icon: IconDeviceLaptop, options: ['Выдают технику', 'Нужен свой ноутбук', 'Оборудование не требуется'] },
   { title: "Гибкость для учёбы", icon: IconClock, options: ['Гибкий график', 'Только на каникулах', 'Можно совмещать с парами'] },
-  { title: "Длительность", icon: IconCalendar, options: ['< 1 месяца', '1–3 месяца', '> 3 месяцев'] },
-  { title: "Начало", icon: IconCalendarClock, options: ['Июнь', 'Июль', 'Август', 'Сентябрь', 'Гибко'] }
+  { title: "Длительность", icon: IconCalendar, options: ['Менее 1 месяца', 'От 1 до 3 месяцев', 'Более 3 месяцев'] },
+  { title: "Начало", icon: IconCalendarClock, options: ['Июнь', 'Июль', 'Август', 'Сентябрь', 'В любое время'] }
 ];
 
 // Фильтр для работы в университете, который можно добавить, если требуется:

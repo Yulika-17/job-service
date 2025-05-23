@@ -158,7 +158,7 @@ const JobDesc = (props: any) => {
                     {(props.edit || !applied) && <Link to={props.edit ? `/post-job/${props.id}` : `/apply-job/${props.id}`}>
                         <Button color="brightSun.4" size="sm" variant="light">{props.closed ? "Повторно открыть" : props.edit ? "Редактировать" : "Откликнуться"}</Button>
                     </Link>}
-                    {!props.edit && applied && <Button color="green.8" size="sm" variant="light">Откликнулся»</Button>}
+                    {!props.edit && applied && <Button color="green.8" size="sm" variant="light">Откликнулся</Button>}
                     {props.edit && !props.closed ? <Button color="red.4" onClick={handleClose} size="sm" variant="outline">Закрыть</Button> : profile.savedJobs?.includes(props.id) ? <IconBookmarkFilled onClick={handleSaveJob} className="cursor-pointer text-bright-sun-400" stroke={1.5} /> : <IconBookmark onClick={handleSaveJob} className="cursor-pointer hover:text-bright-sun-400 text-mine-shaft-300" stroke={1.5} />}
                 </div>
             </div>
@@ -224,9 +224,10 @@ const JobDesc = (props: any) => {
                         <Button color="brightSun.4" variant="light">Страница компании</Button>
                     </Link>
                 </div>
-                <div className="text-mine-shaft-300 text-justify">Наша компания занимается разработкой современных цифровых решений для бизнеса. Мы стремимся создавать качественные продукты, которые упрощают жизнь пользователям и помогают клиентам достигать своих целей. Команда состоит из опытных специалистов, ориентированных на инновации, результат и рост.</div>
+                <div className="text-mine-shaft-300 text-justify">Сбербанк — это крупнейшая экосистема цифровых решений в России, объединяющая финансовые и нефинансовые сервисы. Мы разрабатываем инновационные продукты, которые делают жизнь клиентов проще, удобнее и безопаснее. Наша команда состоит из экспертов, ориентированных на высокое качество, технологическое лидерство и устойчивое развитие.</div>
             </div>
         </div>
+        // Наша компания занимается разработкой современных цифровых решений для бизнеса. Мы стремимся создавать качественные продукты, которые упрощают жизнь пользователям и помогают клиентам достигать своих целей. Команда состоит из опытных специалистов, ориентированных на инновации, результат и рост.
     );
 };
 export default JobDesc;

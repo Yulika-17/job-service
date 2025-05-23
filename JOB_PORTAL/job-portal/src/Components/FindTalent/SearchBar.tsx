@@ -26,6 +26,7 @@ const SearchBar=()=>{
                 <div className="text-bright-sun-400 bg-mine-shaft-900 rounded-full p-1 mr-2"><IconUserCircle size={20}/></div>
                 <Input defaultValue={name} onChange={(e)=>handleChange("name", e)} className="[&_input]:!placeholder-mine-shaft-300" variant="unstyled" placeholder="Имя студента" />
             </div>
+            <Divider mr="xs" size="xs" orientation="vertical" />
             {
                 searchFields.map((item, index) => {
                     return <React.Fragment key={index}><div className="w-1/5"><MultiInput title={item.title} icon={item.icon} options={item.options} />
