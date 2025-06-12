@@ -68,10 +68,46 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDTO registerAlternative(UserDTO userDTO) throws JobPortalException {
+
+        Optional<User> optional = userRepository.findByEmail(userDTO.getEmail());
+        if (optional.isPresent()) throw new JobPortalException("USER_FOUND");
+        userDTO.setProfileId(profileService.createUnverProfile(userDTO.getEmail()));
+        userDTO.setId(Utilities.getNextSequenceId("users"));
+        userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        User user = userDTO.toEntity();
+        user = userRepository.save(user);
+        return user.toDTO();
+    }
+
+    @Override
     public UserDTO loginUser(LoginDTO loginDTO) throws JobPortalException {
         User user = userRepository.findByEmail(loginDTO.getEmail()).orElseThrow(()->new JobPortalException("USER_NOT_FOUND"));
         if(!passwordEncoder.matches(loginDTO.getPassword(), user.getPassword()))throw new JobPortalException("INVALID_CREDENTIALS");
         return user.toDTO();
+    }
+    // Для регистрации (не проверяем существование пользователя)
+    @Override
+    public Boolean sendRegistrationOtp(String email) throws Exception {
+        Optional<User> optional = userRepository.findByEmail(email);
+        if (optional.isPresent()) throw new JobPortalException("USER_FOUND");
+
+        if (!isUniversityEmail(email)) {
+            throw new JobPortalException("EMAIL_IS_INVALID");
+        }
+
+        MimeMessage mm = mailSender.createMimeMessage();
+        MimeMessageHelper message = new MimeMessageHelper(mm, true);
+        message.setTo(email);
+        message.setSubject("Ваш код подтверждения");
+
+        String genOtp = Utilities.generateOTP();
+        OTP otp = new OTP(email, genOtp, LocalDateTime.now());
+        otpRepository.save(otp);
+
+        message.setText(Data.getMessageBody(genOtp, "Пользователь"), true); // Имя можно заменить на "New User"
+        mailSender.send(mm);
+        return true;
     }
 
     @Override

@@ -6,8 +6,18 @@ const registerUser = async (user: any) => {
         .then((result: any) => result.data)
         .catch((error: any) => { throw error; });
 }
+const registerAlternative = async (user: any) => {
+    return axiosInstance.post(`/users/registerAlt`, user)
+        .then((result: any) => result.data)
+        .catch((error: any) => { throw error; });
+}
 const loginUser = async (login: any) => {
     return axiosInstance.post(`/users/login`, login)
+        .then((result: any) => result.data)
+        .catch((error: any) => { throw error; });
+}
+const sendRegistrationOtp = async (email: string) => {
+    return axiosInstance.post(`/users/sendRegistrationOtp/${email}`)
         .then((result: any) => result.data)
         .catch((error: any) => { throw error; });
 }
@@ -35,4 +45,4 @@ const getApplicants=async ()=>{
     .catch((error:any) =>{throw error;});
 }
 
-export { registerUser, loginUser, sendOtp, verifyOtp, resetPassword, getApplicants };
+export { registerUser, registerAlternative, loginUser, sendRegistrationOtp, sendOtp, verifyOtp, resetPassword, getApplicants };

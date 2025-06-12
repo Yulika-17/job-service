@@ -158,7 +158,7 @@ const JobDesc = (props: any) => {
                     {(props.edit || !applied) && <Link to={props.edit ? `/post-job/${props.id}` : `/apply-job/${props.id}`}>
                         <Button color="brightSun.4" size="sm" variant="light">{props.closed ? "Повторно открыть" : props.edit ? "Редактировать" : "Откликнуться"}</Button>
                     </Link>}
-                    {!props.edit && applied && <Button color="green.8" size="sm" variant="light">Откликнулся</Button>}
+                    {!props.edit && applied && <Button color="green.8" size="sm" variant="light">Вы откликнулись</Button>}
                     {props.edit && !props.closed ? <Button color="red.4" onClick={handleClose} size="sm" variant="outline">Закрыть</Button> : profile.savedJobs?.includes(props.id) ? <IconBookmarkFilled onClick={handleSaveJob} className="cursor-pointer text-bright-sun-400" stroke={1.5} /> : <IconBookmark onClick={handleSaveJob} className="cursor-pointer hover:text-bright-sun-400 text-mine-shaft-300" stroke={1.5} />}
                 </div>
             </div>

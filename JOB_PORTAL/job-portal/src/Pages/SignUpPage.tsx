@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const SignUpPage=()=>{
     const location=useLocation();
     const navigate=useNavigate();
-    return <div className="h-[100vh] w-[100vw] bg-mine-shaft-950 font-['montserrat'] overflow-hidden relative">
+    return <div className="h-screen w-screen bg-mine-shaft-950 font-['montserrat'] overflow-hidden relative">
         <Button size="sm" className="!absolute left-5 z-10" color="brightSun.4" my="lg" onClick={()=>navigate("/")} leftSection={<IconArrowLeft size={20}/>} variant="light" >На главную</Button>
         <div className={`w-[100vw] h-[100vh] transition-all ease-in-out duration-1000 flex [&>*]:flex-shrink-0 ${location.pathname=='/signup'?'-translate-x-1/2':'translate-x-0'}`}>
             <Login/>

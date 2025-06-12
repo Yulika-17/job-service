@@ -15,11 +15,11 @@ const AllFiltersModal = ({ opened, close }: { opened: boolean, close: () => void
             </div>
             <Divider my="md" />
             <Group justify="flex-end">
-                <Button variant="outline" leftSection={<IconX size={18} />} onClick={close}>
-                    Выйти
+                <Button variant="outline" color="brightSun.4" autoContrast onClick={close}>
+                    Сбросить
                 </Button>
-                <Button color="brightSun.4" onClick={close}>
-                    Применить фильтры
+                <Button color="brightSun.4" onClick={close} autoContrast>
+                    Применить
                 </Button>
             </Group>
         </Modal>

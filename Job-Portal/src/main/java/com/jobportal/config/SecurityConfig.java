@@ -86,7 +86,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))  // Включаем CORS
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/login", "/users/register", "/users/verifyOtp/**", "/users/sendOtp/**", "/users/changePass").permitAll()
+                        .requestMatchers("/auth/login", "/users/register", "/users/registerAlt", "/users/verifyOtp/**", "/users/sendRegistrationOtp/**","/users/sendOtp/**", "/users/changePass").permitAll()
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(point))

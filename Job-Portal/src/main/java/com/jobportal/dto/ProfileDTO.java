@@ -26,8 +26,10 @@ public class ProfileDTO {
     private List<Certification> certifications;
     private List<Long>savedJobs;
     private boolean verified;
+    private Long studentId;
+    private byte[] studentIdScan;
 
     public Profile toEntity() {
-        return new Profile(this.id, this.name, this.email, this.jobTitle, this.university, this.location, this.about, this.picture!=null?Base64.getDecoder().decode(this.picture):null, this.totalExp, this.skills, this.experiences, this.certifications, this.savedJobs, this.verified);
+        return new Profile(this.id, this.name, this.email, this.jobTitle, this.university, this.location, this.about, this.picture!=null?Base64.getDecoder().decode(this.picture):null, this.totalExp, this.skills, this.experiences, this.certifications, this.savedJobs, this.verified, this.studentId, this.studentIdScan);
     }
 }

@@ -31,9 +31,11 @@ public class Profile {
     private List<Experience> experiences;
     private List<Certification> certifications;
     private List<Long>savedJobs;
-    private boolean verified = false;
+    private boolean verified = true;
+    private Long studentId;
+    private byte[] studentIdScan;
 
     public ProfileDTO toDTO() {
-        return new ProfileDTO(this.id, this.name, this.email, this.jobTitle, this.university, this.location, this.about, this.picture!=null?Base64.getEncoder().encodeToString(this.picture):null, this.totalExp, this.skills, this.experiences, this.certifications, this.savedJobs, this.verified);
+        return new ProfileDTO(this.id, this.name, this.email, this.jobTitle, this.university, this.location, this.about, this.picture!=null?Base64.getEncoder().encodeToString(this.picture):null, this.totalExp, this.skills, this.experiences, this.certifications, this.savedJobs, this.verified, this.studentId, this.studentIdScan);
     }
 }

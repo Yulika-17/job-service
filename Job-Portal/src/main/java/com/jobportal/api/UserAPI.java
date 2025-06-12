@@ -29,6 +29,11 @@ public class UserAPI {
         userDTO = userService.registerUser(userDTO);
         return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
     }
+    @PostMapping("/registerAlt")
+    public ResponseEntity<UserDTO>registerAlternative(@RequestBody @Valid UserDTO userDTO) throws JobPortalException {
+        userDTO = userService.registerAlternative(userDTO);
+        return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
+    }
 
     @PostMapping("/login")
     public ResponseEntity<UserDTO>loginUser(@RequestBody @Valid LoginDTO loginDTO) throws JobPortalException {
@@ -40,6 +45,11 @@ public class UserAPI {
         return new ResponseEntity<>(userService.changePassword(loginDTO), HttpStatus.OK);
     }
 
+    @PostMapping("/sendRegistrationOtp/{email}")
+    public ResponseEntity<ResponseDTO>sendRegistrationOtp(@PathVariable @Email(message="{user.email.invalid}") String email) throws Exception {
+        userService.sendRegistrationOtp(email);
+        return new ResponseEntity<>(new ResponseDTO("OTP sent Successfully."), HttpStatus.OK);
+    }
     @PostMapping("/sendOtp/{email}")
     public ResponseEntity<ResponseDTO>sendOtp(@PathVariable @Email(message="{user.email.invalid}") String email) throws Exception {
         userService.sendOtp(email);
